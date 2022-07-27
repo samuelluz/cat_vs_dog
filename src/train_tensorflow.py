@@ -19,7 +19,7 @@ path = os.path.abspath(pathname)
 
 top_model_weights_path = 'model.h5'
 train_data_dir = os.path.join('data', 'train')
-cats_train_path = os.path.join(path, train_data_dir, 'cats')
+cats_train_path = os.path.join(train_data_dir, 'cats')
 nb_train_samples = 2 * len([name for name in os.listdir(cats_train_path)
                             if os.path.isfile(
                                 os.path.join(cats_train_path, name))])

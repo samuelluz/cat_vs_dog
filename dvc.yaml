@@ -12,10 +12,10 @@ stages:
     outs:
     - features/
   train:
-    cmd: python train_tensorflow.py features/
+    cmd: python src/train_tensorflow.py features/
     deps:
     - features/
-    - train_tensorflow.py
+    - src/train_tensorflow.py
     params:
     - train.epochs
     - featurize.nb_validation_samples

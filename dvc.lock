@@ -1,15 +1,15 @@
 schema: '2.0'
 stages:
   train:
-    cmd: python train_tensorflow.py features/
+    cmd: python src/train_tensorflow.py features/
     deps:
     - path: features/
       md5: fa00b01917890b9f14ea4854d6bba04b.dir
       size: 91750656
       nfiles: 2
-    - path: train_tensorflow.py
-      md5: aa4bfe3b4fbf99ac3f4fa317eabe7c7e
-      size: 2310
+    - path: src/train_tensorflow.py
+      md5: 693f75f761c770d985a3dcab6a1fb132
+      size: 2304
     params:
       params.yaml:
         featurize.batch_size: 10
@@ -17,10 +17,10 @@ stages:
         train.epochs: 10
     outs:
     - path: metrics.csv
-      md5: 5ede5c9698ffbd642707bf009d7085a1
-      size: 820
+      md5: 94cf40bfa8c7c40e0ad37639e8953ace
+      size: 838
     - path: model.h5
-      md5: db27c3bf279149bd2aad0a777304c9ca
+      md5: 7391be06185ab79da16a1f75cdfb5320
       size: 8406200
   featurize:
     cmd: python src/featurization.py data/
