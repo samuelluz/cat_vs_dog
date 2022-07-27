@@ -8,19 +8,19 @@ stages:
       size: 91750656
       nfiles: 2
     - path: src/train_tensorflow.py
-      md5: 693f75f761c770d985a3dcab6a1fb132
-      size: 2304
+      md5: 5ae5c421e218a4d4d9e3ad75dd6fc914
+      size: 2370
     params:
       params.yaml:
         featurize.batch_size: 10
         featurize.nb_validation_samples: 800
-        train.epochs: 10
+        train.epochs: 100
     outs:
-    - path: metrics.csv
-      md5: 94cf40bfa8c7c40e0ad37639e8953ace
-      size: 838
+    - path: evaluation.json
+      md5: a748ee6ded1f96e0c19806b08406bff5
+      size: 212
     - path: model.h5
-      md5: 7391be06185ab79da16a1f75cdfb5320
+      md5: 7581f7688538b3fc146f4f95b75e79cf
       size: 8406200
   featurize:
     cmd: python src/featurization.py data/

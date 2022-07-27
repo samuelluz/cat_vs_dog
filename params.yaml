@@ -5,4 +5,4 @@ featurize:
   batch_size: 10
 
 train:
-  epochs: 10
+  epochs: 100

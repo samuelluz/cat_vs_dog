@@ -23,5 +23,5 @@ stages:
     outs:
     - model.h5
     metrics:
-    - metrics.csv:
+    - evaluation.json:
         cache: false
