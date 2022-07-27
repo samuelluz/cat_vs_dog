@@ -1,12 +1,26 @@
 stages:
-  train:
-    cmd: python train_tensorflow.py
+  featurize:
+    cmd: python src/featurization.py data/
     deps:
-    - data
-    - train_tensorflow.py
+    - data/
+    - src/featurization.py
+    params:
+    - featurize.img_width
+    - featurize.img_height
+    - featurize.nb_validation_samples
+    - featurize.batch_size
     outs:
-    - bottleneck_features_train.npy
-    - bottleneck_features_validation.npy
+    - features/
+  train:
+    cmd: python train_tensorflow.py features/
+    deps:
+    - features/
+    - train_tensorflow.py
+    params:
+    - train.epochs
+    - featurize.nb_validation_samples
+    - featurize.batch_size
+    outs:
     - model.h5
     metrics:
     - metrics.csv:

@@ -1,25 +1,45 @@
 schema: '2.0'
 stages:
   train:
-    cmd: python train_tensorflow.py
+    cmd: python train_tensorflow.py features/
     deps:
-    - path: data
+    - path: features/
+      md5: fa00b01917890b9f14ea4854d6bba04b.dir
+      size: 91750656
+      nfiles: 2
+    - path: train_tensorflow.py
+      md5: aa4bfe3b4fbf99ac3f4fa317eabe7c7e
+      size: 2310
+    params:
+      params.yaml:
+        featurize.batch_size: 10
+        featurize.nb_validation_samples: 800
+        train.epochs: 10
+    outs:
+    - path: metrics.csv
+      md5: 5ede5c9698ffbd642707bf009d7085a1
+      size: 820
+    - path: model.h5
+      md5: db27c3bf279149bd2aad0a777304c9ca
+      size: 8406200
+  featurize:
+    cmd: python src/featurization.py data/
+    deps:
+    - path: data/
       md5: 21060888834f7220846d1c6f6c04e649.dir
       size: 64128504
       nfiles: 2800
-    - path: train_tensorflow.py
-      md5: 7387be29394671d4600ad5b455492aef
-      size: 3332
+    - path: src/featurization.py
+      md5: fa0117b86a0da4cbe91b21bcc226a2b1
+      size: 2387
+    params:
+      params.yaml:
+        featurize.batch_size: 10
+        featurize.img_height: 150
+        featurize.img_width: 150
+        featurize.nb_validation_samples: 800
     outs:
-    - path: bottleneck_features_train.npy
-      md5: 3b5b7ce29e89d7656feba22e57b295da
-      size: 65536128
-    - path: bottleneck_features_validation.npy
-      md5: 3377642a1a415086211ac22722aa6336
-      size: 26214528
-    - path: metrics.csv
-      md5: 6ff72b0e3767f65427151d15268d5bdd
-      size: 840
-    - path: model.h5
-      md5: 7c5f6cbcd3b908965daf4cbd13e53844
-      size: 8406200
+    - path: features/
+      md5: fa00b01917890b9f14ea4854d6bba04b.dir
+      size: 91750656
+      nfiles: 2
